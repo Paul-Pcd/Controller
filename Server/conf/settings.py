@@ -2,7 +2,7 @@
 import services
 
 Cluster1 = services.MonitorTemplate1()      # 主机集群：集群内的主机监控相同的模板（项目和指标）
-Cluster1.hosts = ['192.168.1.1', ]
+Cluster1.hosts = ['127.0.0.1', ]
 Cluster2 = services.MonitorTemplate2()
 Cluster2.hosts = ['192.168.1.3', '192.168.1.4']
 MonitorGroups = [Cluster1]                  # 监控组：对加入组内的集群启动监控服务
