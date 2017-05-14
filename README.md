@@ -51,4 +51,12 @@ sudo pip install redis
  2、实现客户端CPU的监控使用sar命令，需要先安装sysstat包：    
  <pre><code>sudo apt-get install sysstat</code></pre>
  3、指定监控指标可修改Server/conf/service.py文件；指定监控组和集群可修改Server/conf/settings.py。    
- 4、由于默认以root用户登录，远程执行命令时默认为客户端root用户的根目录。    
+ 4、由于默认以root用户登录，远程执行命令时默认为客户端root用户的根目录。
+ 5、使用apt-get、yum安装的redis默认绑定本地127.0.0.1，要使其他机器也能访问则修改配置文件（一般为/etc/redis/redis.conf）：
+ <pre><code>bind 0.0.0.0</code></pre>
+ 重新启动redis：
+ <pre><code>service redis restart</code></pre>
+ 6、重新启动程序时出现获取监控数据异常的情况，可以尝试清空redis数据再重新启动服务端程序：
+ <pre><code>redis-cli
+ 127.0.0.1:6379> flushall
+ </code></pre>

@@ -7,6 +7,7 @@ from conf import settings
 import json
 import time
 import threading
+import sys
 
 
 class Monitor(object):
@@ -21,7 +22,9 @@ class Monitor(object):
     def load_configs(self):
         if self.redis.get(settings.ClientIP):  # 192.168.1.1   {u'Memory': [u'get_memory_status', 20, 0] }
             configs = json.loads(self.redis.get(settings.ClientIP))  # {u'Memory': [u'get_memory_status', 20, 0] }
-        return configs
+            return configs
+        else:
+            sys.exit("Please connect to redis.")
 
     # 处理监控请求
     def handle(self):

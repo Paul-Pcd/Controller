@@ -5,7 +5,7 @@
 import commands
 
 
-def monitor(frist_invoke=1):
+def monitor():
     shell_command = 'sar 1 3| grep "^Average:"'
     status, result = commands.getstatusoutput(shell_command)
     if status != 0:

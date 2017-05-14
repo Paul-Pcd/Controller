@@ -59,12 +59,12 @@ def data_process(main_ins):
                             service_item_handle(main_ins, item_key, val_dic, service_data)
                     else:
                         # 超出监控间隔，数据过期
-                        print("\033[31;1mHost[{ip}] Service[{service_name}] error has occured.\033[0m" .format(
+                        print("\n\033[31;1mHost[{ip}] Service[{service_name}] error has occured.\033[0m" .format(
                             ip=ip,
                             service_name=service_name
                         ))
                 else:
-                    print("\033[31;1mFailed to get Host[{ip}] Service[{service_name}] data.\033[0m" .format(
+                    print("\n\033[31;1mFailed to get Host[{ip}] Service[{service_name}] data.\033[0m" .format(
                         ip=ip,
                         service_name=service_name
                     ))
