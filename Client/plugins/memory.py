@@ -14,7 +14,7 @@ def monitor():
         mem_total, mem_use = float(result[1]), float(result[2])
         swap_total, swap_use = float(result[8]), float(result[9])
         mem_usage = mem_use * 100 / mem_total
-        swap_usage = mem_use * 100 / mem_total
+        swap_usage = swap_use * 100 / swap_total
         value_dic = {
             'mem_total': mem_total,
             'mem_use': mem_use,

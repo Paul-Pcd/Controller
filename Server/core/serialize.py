@@ -73,10 +73,11 @@ def data_process(main_ins):
 
 # 分析客户端数据
 def service_item_handle(main_ins, item_key, val_dic, service_data):     # 监控阈值指标、阈值、客户端数据
-    print('\033[46;1m{service}\t\t( {item}\t{data} )\033[0m'.format(
+    print('\033[46;1m{host}\t{service}\t\t( {item}  {data} )\033[0m'.format(
         service=service_data['service'],
         item=item_key,
-        data=service_data['data'][item_key]
+        data=service_data['data'][item_key],
+        host=service_data['host']
     ))
     # Memory    MemUsage_p  25
     item_data = service_data['data'][item_key]      # 客户端（具体指标的）数据
@@ -96,22 +97,19 @@ def service_item_handle(main_ins, item_key, val_dic, service_data):     # 监控
             critical_res=critical_res
         ))
         if critical_res:
-            print("\033[41;1mCRITICAL\033[0m   Host[{host}]  Service[{service}]  threshold[{critical_val}]  current[{item_data}]".format(
-                host=service_data['host'],
+            print("\033[41;1mCRITICAL\033[0m   Service[{service}]  threshold[{critical_val}]  current[{item_data}]".format(
                 service=service_data['service'],
                 critical_val=critical_val,
                 item_data=item_data
             ))
         elif warning_res:
-            print("\033[43;1mWARNING\033[0m    Host[{host}]  Service[{service}]  threshold[{warning_val}]  current[{item_data}]".format(
-                host=service_data['host'],
+            print("\033[43;1mWARNING\033[0m    Service[{service}]  threshold[{warning_val}]  current[{item_data}]".format(
                 service=service_data['service'],
                 warning_val=warning_val,
                 item_data=item_data
             ))
         else:
-            print("\033[42;1mNORMAL\033[0m     Host[{host}]  Service[{service}]  threshold[{warning_val}]  current[{item_data}]".format(
-                host=service_data['host'],
+            print("\033[42;1mNORMAL\033[0m     Service[{service}]  threshold[{warning_val}]  current[{item_data}]".format(
                 service=service_data['service'],
                 warning_val=warning_val,
                 item_data=item_data

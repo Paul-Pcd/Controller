@@ -64,7 +64,7 @@ class Monitor(object):
 class Operator(object):
 
     def __init__(self):
-        print("Remote control system.")
+        print("")
         self.ip_list = []
         for cluster in settings.MonitorGroups:
             for ip in cluster.hosts:
@@ -113,8 +113,7 @@ class Operator(object):
             channel = transport.open_session()      # 建立一个会话通道
             channel.get_pty()
             channel.exec_command(cmd)               # 执行命令
-            print("\n================================================")
-            print("ip: {}                command: {}".format(ip, cmd))
+            print("\n\033[46;1mHost: [{}]\tCommand: [{}]\033[0m\n".format(ip, cmd))
             f = open(output_filename, 'a+')
             f.write('\n\n\n====== %s    %s ======\n\n' % (ip, time.strftime('%Y-%m-%d %H:%M:%S')))
             while True:
