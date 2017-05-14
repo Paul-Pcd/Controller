@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import load
+import network
 import cpu
 import memory
 
 
 # 获取网卡带宽状态
 def get_network_status():
-    return load.monitor()
+    return network.monitor()
 
 
 # 获取CPU状态

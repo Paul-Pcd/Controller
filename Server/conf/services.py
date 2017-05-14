@@ -47,13 +47,22 @@ class Memory(BaseService):
         self.name = 'Memory'
         self.plugin_name = 'get_memory_status'
         self.triggers = {
-            'MemUsage_p': {
+            'mem_usage': {
                'func': 'avg',
-               'last': 5 * 60,
+               'last': 3 * 60,
                'count': 1,
                'operator': 'gt',
-               'warning': 30,
-               'critical': 50,
+               'warning': 60,
+               'critical': 80,
+               'data_type': float
+            },
+            'swap_usage': {
+               'func': 'avg',
+               'last': 3 * 60,
+               'count': 1,
+               'operator': 'gt',
+               'warning': 70,
+               'critical': 90,
                'data_type': float
             }
         }
@@ -69,20 +78,20 @@ class Network(BaseService):
         self.triggers = {
             'in': {
                 'func': 'hit',
-                'last': 10*60,
+                'last': 1 * 60,
                 'count': 5,
                 'operator': 'gt',
-                'warning': 1024 * 1024 * 10,
-                'critical': 1024 * 1024 * 15,
+                'warning': 3000,        # rxpck/s   每秒接收包数量
+                'critical': 4000,
                 'data_type': float
              },
              'out': {
                  'func': 'hit',
-                 'last': 10 * 60,
+                 'last': 1 * 60,
                  'count': 5,
-                 'operator': 'gt',
-                 'warning': 1024 * 1024 * 10,
-                 'critical': 1024 * 1024 * 15,
+                 'operator': 'gt',      # txpck/s   每秒发送包数量
+                 'warning': 2000,
+                 'critical': 3000,
                  'data_type': float
              }
          }
@@ -102,7 +111,7 @@ class MonitorTemplate1(BaseTemplate):
         super(MonitorTemplate1, self).__init__()
         self.name = "LinuxCommonServices"
         self.hosts = []
-        self.services = [CPU(), Memory(), ]
+        self.services = [CPU(), Memory(), Network()]
 
 
 # 集群2的监控模板

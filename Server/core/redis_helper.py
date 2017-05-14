@@ -2,6 +2,7 @@
 import redis
 from conf import settings
 
+
 class RedisHelper(object):
     
     def __init__(self):

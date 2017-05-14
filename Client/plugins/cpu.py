@@ -11,7 +11,6 @@ def monitor(frist_invoke=1):
     if status != 0:
         value_dic = {'status': status}
     else:
-        value_dic = {}
         user, nice, system, iowait, steal, idle = result.split()[2:]
         value_dic = {
             'user': user,
