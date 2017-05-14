@@ -42,7 +42,7 @@ sudo pip install redis
 <pre><code>python Server/bin/manage.py operate</code></pre>
 
 ## 运行效果
-![Controller](http://ooaovpott.bkt.clouddn.com/Controller.png)
+![Controller](http://ooaovpott.bkt.clouddn.com/Monitor-Operator.png)
  
  ## 注意事项
  1、启用系统监控时必须先启动服务端（把监控模板写入Redis）才能启动客户端，否则客户端获取不到监控指标会报错。     
