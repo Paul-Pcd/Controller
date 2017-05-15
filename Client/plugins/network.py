@@ -5,7 +5,7 @@ import commands
 
 
 def monitor():
-    shell_command = 'sar -n DEV 1 3| grep "^Average:.*eth0"'    # 默认只监控eth0网卡
+    shell_command = 'sar -n DEV 1 3| egrep "^Average:.*(eth0|ens33)"'    # 默认只监控eth0/ens33网卡
 
     status, result = commands.getstatusoutput(shell_command)
     if status != 0:     # cmd exec error
